@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -74,7 +69,7 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        // Not used rn. Dont need to initialize anyfin
     }
 
     @FXML
@@ -127,6 +122,7 @@ public class FXMLDocumentController implements Initializable {
         addNumb(0);
     }
 
+    // Berechnet die Resultate
     @FXML
     private void btnEnter(ActionEvent event) throws CalculatorException {
         if (zahl1 != "" && zahl2 != "") {
@@ -181,6 +177,7 @@ public class FXMLDocumentController implements Initializable {
         addOper("/");
     }
 
+    // Backspace
     @FXML
     private void btnC(ActionEvent event) {
         zahl1 = "";
@@ -193,6 +190,7 @@ public class FXMLDocumentController implements Initializable {
         screen.setText("0");
     }
 
+    // Eine Funktion für alle Nummern
     private void addNumb(Integer a) {
         if (powPressed) {
             pow(a);
@@ -215,6 +213,7 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    // Wenn ein Operator button gedrückt wird
     private void addOper(String op) {
         if (operation == "") {
             operation = op;
@@ -226,29 +225,34 @@ public class FXMLDocumentController implements Initializable {
         screen.setText(String.valueOf(zahl1) + "  " + operation + " " + String.valueOf(zahl2));
 
     }
-
+    
+    // Str Button wird gedrückt
     @FXML
     private void btnStr(ActionEvent event) {
         strPressed = true;
         displayStored();
     }
 
+    // Rcl wird gedrückt
     @FXML
     private void btnRcl(ActionEvent event) {
         rclPressed = true;
         displayStored();
     }
 
+    // Für ^n Operationen
     @FXML
     private void btnHoch(ActionEvent event) {
         powPressed = true;
     }
 
+    // Für ^2 Operationen
     @FXML
     private void btnQuadrat(ActionEvent event) {
         ownPow(2);
     }
 
+    // Gespeicherte Zahlen wiedergeben
     private void displayStored() {
         String s = "| ";
         for (float a : stored) {
@@ -257,7 +261,9 @@ public class FXMLDocumentController implements Initializable {
         }
         screen.setText(s);
     }
-
+    
+    
+    // Backspace
     @FXML
     private void btnBack(ActionEvent event) {
 
@@ -272,6 +278,7 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    // Die letzte Char eines Strings entfernen
     private String removeOne(String str) {
         String rtn;
         try {
